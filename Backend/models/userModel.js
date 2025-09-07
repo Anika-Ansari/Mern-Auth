@@ -1,4 +1,3 @@
-import { verify } from "jsonwebtoken";
 import mongoose from "mongoose";
 
 
@@ -9,5 +8,11 @@ const userSchema = new mongoose.Schema({
     verifyOtp: { type: String, default: '' },
     verifyOtpExpireAt: { type: Number, default: 0 },
     isAccountVerified: { type: Boolean, default: false },
+    resetOtp: { type: String, default: '' },
+    resetOtpExpireAt: { type: Number, default: 0 },
 
 })
+
+const userModel = mongoose.models.user || mongoose.model('user',userSchema)
+
+export default userModel;
